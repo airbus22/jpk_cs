@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace jpkapp
 {
-    public partial class Form1 : Form
+    public partial class jpk_main_window : Form
     {
-        public Form1()
+        public jpk_main_window()
         {
             InitializeComponent();
         }
