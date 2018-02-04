@@ -27,8 +27,8 @@ namespace jpkapp
         {
             private String connectionString;
             private String OleDBProvider = "Microsoft.JET.OLEDB.4.0";   //if ACE Microsoft.ACE.OLEDB.12.0
-            private String OleDBDataSource = "C:\\test.mdb";
-            private String OleDBPassword = "infosys";
+            private String OleDBDataSource = "C:\\test_access2000.mdb";
+            private String OleDBPassword = "";
             private String PersistSecurityInfo = "False";
 
             public dbs()
