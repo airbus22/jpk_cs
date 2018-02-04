@@ -26,8 +26,8 @@ namespace jpkapp
         public class dbs
         {
             private String connectionString;
-            private String OleDBProvider = "Microsoft.JET.OLEDB.4.0"; \\if ACE Microsoft.ACE.OLEDB.12.0
-            private String OleDBDataSource = "C:\\yourdb.mdb";
+            private String OleDBProvider = "Microsoft.JET.OLEDB.4.0";   //if ACE Microsoft.ACE.OLEDB.12.0
+            private String OleDBDataSource = "C:\\test.mdb";
             private String OleDBPassword = "infosys";
             private String PersistSecurityInfo = "False";
 
