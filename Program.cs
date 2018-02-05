@@ -16,7 +16,7 @@ namespace jpkapp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new jpk_main_window());
+            Application.Run(new Jpk_main_window());
         }
     }
 }
