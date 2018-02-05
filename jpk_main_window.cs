@@ -14,7 +14,7 @@ namespace jpkapp
 {
     public partial class jpk_main_window : Form
     {
-        MySqlConnection connection, pobierzMAXvalue;
+        MySqlConnection connection;
         string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
 
         public jpk_main_window()

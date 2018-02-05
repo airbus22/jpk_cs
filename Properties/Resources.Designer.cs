@@ -59,14 +59,5 @@ namespace jpkapp.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu .
-        /// </summary>
-        internal static string ConnectionString {
-            get {
-                return ResourceManager.GetString("ConnectionString", resourceCulture);
-            }
-        }
     }
 }
