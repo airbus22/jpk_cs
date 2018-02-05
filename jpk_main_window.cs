@@ -30,7 +30,7 @@ namespace jpkapp
             MySqlDataAdapter da = new MySqlDataAdapter(zapytanie,ConnectionString);
             DataSet ds = new DataSet();
             da.Fill(ds,"stan_fin");
-            ds.WriteXml("jpk_mag.xml", XmlWriteMode.WriteSchema);
+            ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
             //pobierzMAXvalue = new MySqlConnection(ConnectionString);
             //MySqlCommand zapytanieMAXvalue = new MySqlCommand("SELECT MAX(id_kandydata) FROM web_test_skasowac.rekrutacjaksap", pobierzMAXvalue);
             //zapytanieMAXvalue.Connection.Open();
