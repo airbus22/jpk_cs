@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace jpkapp
 {
     public partial class jpk_main_window : Form
     {
+        MySqlConnection connection, pobierzMAXvalue;
+        string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
+
         public jpk_main_window()
         {
             InitializeComponent();
