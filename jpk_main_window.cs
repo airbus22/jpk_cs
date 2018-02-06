@@ -19,6 +19,37 @@ namespace jpkapp
         MySqlConnection connection, pobierzMAXvalue;
         string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
 
+        string XML_linia1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        string XML_linia2 = "<JPK xmlns:etd=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/\" xmlns:kck=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2013/05/23/eD/KodyCECHKRAJOW/\" xmlns=\"http://jpk.mf.gov.pl/wzor/2016/10/26/10261/\">";
+        string XML_linia3 = " <Naglowek>";
+        string XML_linia4 = " < KodFormularza kodSystemowy = \"JPK_MAG(2)\" wersjaSchemy=\"1-0\">JPK_MAG</KodFormularza>";
+        string XML_linia5 = " < WariantFormularza>2</WariantFormularza>";
+        string XML_linia6 = " <CelZlozenia>1</CelZlozenia>";
+        string XML_linia7 = " < DataWytworzeniaJPK>2017-08-16T13:32:46</DataWytworzeniaJPK>";
+        string XML_linia8 = " < DataOd>2017-07-01</DataOd>";
+        string XML_linia9 = " <DataDo>2017-07-31</DataDo>";
+        string XML_linia10 = " < DomyslnyKodWaluty>PLN</DomyslnyKodWaluty>";
+        string XML_linia11 = " <KodUrzedu>1449</KodUrzedu>";
+        string XML_linia12 = " </Naglowek>";
+        string XML_linia13 = " <Podmiot1>";
+        string XML_linia14 = " < IdentyfikatorPodmiotu>";
+        string XML_linia15 = " <etd:NIP>5250006124</etd:NIP>";
+        string XML_linia16 = " < etd:PelnaNazwa>KRAJOWA SZKOŁA ADMINISTRACJI PUBLICZNEJ im.Prezydenta Rzeczypospolitej Polskiej Lecha Kaczyńskiego</etd:PelnaNazwa>";
+        string XML_linia17 = " < etd:REGON>006472421</etd:REGON>";
+        string XML_linia18 = " </IdentyfikatorPodmiotu>";
+        string XML_linia19 = " <AdresPodmiotu>";
+        string XML_linia20 = " < KodKraju>PL</KodKraju>";
+        string XML_linia21 = " <Wojewodztwo>Mazowieckie</Wojewodztwo>";
+        string XML_linia22 = " < Powiat>WARSZAWSKI</Powiat>";
+        string XML_linia23 = " <Gmina>CENTRUM</Gmina>";
+        string XML_linia24 = " < Ulica>WAWELSKA</Ulica>";
+        string XML_linia25 = " <NrDomu>56</NrDomu>";
+        string XML_linia26 = " < Miejscowosc>WARSZAWA</Miejscowosc>";
+        string XML_linia27 = " <KodPocztowy>00-922</KodPocztowy>";
+        string XML_linia28 = " < Poczta>WARSZAWA</Poczta>";
+        string XML_linia29 = " </AdresPodmiotu>";
+        string XML_linia30 = " </Podmiot1>";
+
         public Jpk_main_window()
         {
             InitializeComponent();
