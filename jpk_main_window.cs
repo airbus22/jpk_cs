@@ -60,8 +60,12 @@ namespace jpkapp
             string zapytanie = "SELECT * FROM jpk_db.stan_fin";
             MySqlDataAdapter da = new MySqlDataAdapter(zapytanie,ConnectionString);
             DataSet ds = new DataSet();
-            da.Fill(ds,"stan_fin");
-            ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
+            DataRow row = new DataRow();
+            //da.Fill(ds,"stan_fin");
+            //ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
+
+
+
             //pobierzMAXvalue = new MySqlConnection(ConnectionString);
             //MySqlCommand zapytanieMAXvalue = new MySqlCommand("SELECT MAX(id_kandydata) FROM web_test_skasowac.rekrutacjaksap", pobierzMAXvalue);
             //zapytanieMAXvalue.Connection.Open();
@@ -75,11 +79,95 @@ namespace jpkapp
             //MySqlCommand zapisz_btn_insert = new MySqlCommand();
             //zapisz_btn_insert.CommandType = System.Data.CommandType.Text;
             //zapisz_btn_insert.CommandText = "INSERT INTO web_test_skasowac.rekrutacjaksap(id_kandydata,dok_plec,dok_imie" + "VALUES (" + MAXval + "," + "'" + dok_plec_ddl.SelectedValue.ToString() + o_kolegiumKSAP_ddl.SelectedValue.ToString() + "'" + "," + "'" + o_zrodloRekKSAP_ddl.SelectedValue.ToString() + "'" + ")";
-            
+
             //zapisz_btn_insert.Connection = connection;
             //connection.Open();
             //zapisz_btn_insert.ExecuteNonQuery();
             //connection.Close();
+
+            try
+            {
+                connection.Open();
+                da.Fill(ds, "operacje");
+
+                if (ds.Tables("operacje").Rows.Count > 0)
+                    foreach row
+            }
+
+            catch
+            {
+
+            }
+
+            finally
+            {
+
+            }
+
+
+
+        //    Try
+        //    cn.Open()
+        //    da.Fill(ds, "Selected")
+        //    If ds.Tables("Selected").Rows.Count > 0 Then
+        //        For Each row As DataRow In ds.Tables("Selected").Rows
+        //            da.SelectCommand.CommandText = "SELECT dbo.NazwaPlikuPDF(" + row.Item("ID_DOC_FOR_PRINT").ToString + ")" '"select dbo.NazwaPlikuPDF(" + row.Item("ID").ToString + ")"
+        //            da.Fill(ds, "Nazwa")
+        //            For Each plik As DataRow In ds.Tables("Nazwa").Rows
+        //                '    If ds.Tables("Nazwa").Rows.Count > 0 Then
+        //                '        fFile = New FileInfo(cPathToeInvoices + plik.Item(0) + ".pdf")
+        //                '        If fFile.Exists Then
+        //                '            iSize = fFile.Length
+        //                '            dData = fFile.LastWriteTime
+        //                '        Else
+        //                iSize = 0
+        //                dData = Now
+        //                '        End If
+        //                '        fFile = Nothing
+        //                '    End If
+        //                cBufor = cXMLLine1 + cXMLLine2
+        //                da.SelectCommand.CommandText = "exec dbo.eFakturaXMLgb " + row.Item("ID_DOC_FOR_PRINT").ToString + ", '', " + iSize.ToString + ", '" + dData.ToString + "'"
+        //                da.Fill(ds, "Dokument")
+        //                If ds.Tables("Dokument").Rows.Count > 0 Then
+        //                    wiersz = ds.Tables("Dokument").Rows(0)
+        //                    'If InStr(1, wiersz.Item("Description"), "WZ") > 0 Then
+        //                    cBufor = cBufor + "<Description>" + wiersz.Item("Description").ToString + "</Description>"
+        //                    'cBufor = cBufor + "<LastModified>" + wiersz.Item("LastModified").ToString + "</LastModified>"
+        //                    'cBufor = cBufor + "<FileName>" + wiersz.Item("FileName").ToString + "</FileName>"
+        //                    'cBufor = cBufor + "<FileSize>" + wiersz.Item("FileSize").ToString + "</FileSize>"
+        //                    cBufor = cBufor + "<InvNumber>" + wiersz.Item("InvNumber").ToString + "</InvNumber>"
+        //                    cBufor = cBufor + "<InvRecipient>" + wiersz.Item("InvRecipient").ToString + "</InvRecipient>"
+        //                    cBufor = cBufor + "<NettoAmount>" + wiersz.Item("NettoAmount").ToString.Replace(",", ".") + "</NettoAmount>"
+        //                    cBufor = cBufor + "<BruttoAmount>" + wiersz.Item("BruttoAmount").ToString.Replace(",", ".") + "</BruttoAmount>"
+        //                    cBufor = cBufor + "<Currency>" + wiersz.Item("dh").ToString + "</Currency>"
+        //                    cBufor = cBufor + "<NIP>" + wiersz.Item("NIP").ToString + "</NIP>"
+        //                    cBufor = cBufor + "<Email>" + wiersz.Item("Email").ToString + "</Email>"
+        //                    cBufor = cBufor + "<RecipientNumber>" + wiersz.Item("dm").ToString + "</RecipientNumber>"
+        //                    cBufor = cBufor + "<InvoiceKind>" + wiersz.Item("rodzaj").ToString + "</InvoiceKind>"
+        //                    cBufor = cBufor + cXMLLineN
+        //                    'End If
+        //                    My.Computer.FileSystem.WriteAllText(cPathToeInvoices + plik.Item(0) + ".metadata", cBufor, False)
+        //                    ds.Tables("Dokument").Clear()
+        //                End If
+        //            Next
+        //            ds.Tables("Nazwa").Clear()
+        //        Next
+        //        ds.Tables("Selected").Clear()
+        //    End If
+        //Catch ex As Exception
+        //    My.Computer.FileSystem.WriteAllText("D:\TESTY_APPS\efakturyxmlll\efaktura\eFakturaXML_error_log.txt", ex.Message, True)  '"O:\EFAKTURA\eFakturaXML_error_log.txt"
+        //    Console.WriteLine("Procedura przerwana błędem działania aplikacji proszę o sprawdzenie przyczyny...")
+        //Finally
+        //    Console.WriteLine("Procedura zakończona...")
+        //    daDeleteTAB.Fill(dsDeleteTAB, "Deleted")
+        //    cn.Close()
+        //    ds.Dispose()
+        //    da.Dispose()
+        //    daDeleteTAB.Dispose()
+        //    cn.Dispose()
+        //End Try
+
+
         }
 
         public class Dbs
