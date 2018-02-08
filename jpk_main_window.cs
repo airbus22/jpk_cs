@@ -60,7 +60,7 @@ namespace jpkapp
             string zapytanie = "SELECT * FROM jpk_db.stan_fin";
             MySqlDataAdapter da = new MySqlDataAdapter(zapytanie,ConnectionString);
             DataSet ds = new DataSet();
-            DataRow row = new DataRow();
+            //nieDziała taka deklaracja >> DataRow row = new DataRow();
             //da.Fill(ds,"stan_fin");
             //ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
 
