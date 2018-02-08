@@ -41,10 +41,10 @@ namespace jpkapp
         string XML_linia7 = "       <DataWytworzeniaJPK>" + DateTime.Now.ToString() + "2017-08-16T13:32:46</DataWytworzeniaJPK>";
         string XML_linia8 = "       <DataOd>2018-07-01</DataOd>";
         string XML_linia9 = "       <DataDo>2018-07-31</DataDo>";
-        string XML_linia10 = "      <DomyslnyKodWaluty>PLN</DomyslnyKodWaluty>";
-        string XML_linia11 = "      <KodUrzedu>1449</KodUrzedu>";
-        string XML_linia12 = "  </Naglowek>";
-        string XML_linia13 = "  <Podmiot1>";
+        string XML_linia10 = "       <DomyslnyKodWaluty>PLN</DomyslnyKodWaluty>";
+        string XML_linia11 = "       <KodUrzedu>1449</KodUrzedu>";
+        string XML_linia12 = "   </Naglowek>";
+        string XML_linia13 = "   <Podmiot1>";
         string XML_linia14 = "      <IdentyfikatorPodmiotu>";
         string XML_linia15 = "          <etd:NIP>5250006124</etd:NIP>";
         string XML_linia16 = "          <etd:PelnaNazwa>KRAJOWA SZKOŁA ADMINISTRACJI PUBLICZNEJ im.Prezydenta Rzeczypospolitej Polskiej Lecha Kaczyńskiego</etd:PelnaNazwa>";
