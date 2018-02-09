@@ -16,10 +16,9 @@ namespace jpkapp
 {
     public partial class Jpk_main_window : Form
     {
-        MySqlConnection connection, pobierzMAXvalue;
+        //MySqlConnection connection, pobierzMAXvalue;
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
-
-        //string zapytanie = "SELECT * FROM jpk_db.stan_fin";
+        
         static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
         MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
         DataSet ds = new DataSet();
@@ -27,9 +26,9 @@ namespace jpkapp
         //da.Fill(ds, "stan_fin");
         //ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
 
-        string nazwaPlikuXML = "jpk_mag.xml";
+        //string nazwaPlikuXML = "jpk_mag.xml";
         string lokalizacjaPlikuXML = @"C:\jpk_mag.xml"; //+ nazwaPlikuXML + """;
-        string Bufor;
+        //string Bufor;
         FileInfo InformacjaOPliku = new FileInfo("c:\\jpk_mag.xml");        
 
         string XML_linia1  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -71,46 +70,32 @@ namespace jpkapp
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //pobierzMAXvalue = new MySqlConnection(ConnectionString);
-            //MySqlCommand zapytanieMAXvalue = new MySqlCommand("SELECT MAX(id_kandydata) FROM web_test_skasowac.rekrutacjaksap", pobierzMAXvalue);
-            //zapytanieMAXvalue.Connection.Open();
-            //string MAXval_ = zapytanieMAXvalue.ExecuteScalar().ToString();
-            //if (MAXval_ == "")
-            //    MAXval_ = "0";
 
-            //int MAXval = UInt16.Parse(MAXval_) + 1;    //obliczenie wartości id_kandydata dla kolejnego INSERTa
+            try
+            {
+                //connection.Open();
+                da.Fill(ds, "operacje");
 
-            //connection = new MySqlConnection(ConnectionString);
-            //MySqlCommand zapisz_btn_insert = new MySqlCommand();
-            //zapisz_btn_insert.CommandType = System.Data.CommandType.Text;
-            //zapisz_btn_insert.CommandText = "INSERT INTO web_test_skasowac.rekrutacjaksap(id_kandydata,dok_plec,dok_imie" + "VALUES (" + MAXval + "," + "'" + dok_plec_ddl.SelectedValue.ToString() + o_kolegiumKSAP_ddl.SelectedValue.ToString() + "'" + "," + "'" + o_zrodloRekKSAP_ddl.SelectedValue.ToString() + "'" + ")";
+                foreach (DataTable table in ds.Tables)
+                {
+                    foreach (DataRow dr in table.Rows)
+                    {
+                        var dok_pz_rw = dr["dok_pz_rw"].ToString();
+                        StreamWriter plikXML = new StreamWriter(@"c:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+                        plikXML.WriteLine("  <Test> " + plikXML + "  </Test> ");
+                    }
+                }
+            }
 
-            //zapisz_btn_insert.Connection = connection;
-            //connection.Open();
-            //zapisz_btn_insert.ExecuteNonQuery();
-            //connection.Close();
+            catch (Exception ConnEX)
+            {
+                MessageBox.Show(ConnEX.ToString());
+            }
 
-            //try
-            //{
-            //    connection.Open();
-            //    da.Fill(ds, "operacje");
-
-            //    //if (ds.)
-            //    //{
-            //    //    foreach row
-
-            //    //}
-            //}
-
-            //catch (Exception ConnEX)
-            //{
-            //    MessageBox.Show(ConnEX.ToString());
-            //}
-
-            //finally
-            //{
-            //    connection.Close();
-            //}
+            finally
+            {
+                //connection.Close();
+            }
 
             try
             {
@@ -118,26 +103,6 @@ namespace jpkapp
                 {
                     File.Delete(lokalizacjaPlikuXML);
                 }
-                //// Create a new file 
-                //using (FileStream fs = File.Create(lokalizacjaPlikuXML))
-                //{
-                //    // Add some text to file
-                //    byte[] title = new UTF8Encoding(true).GetBytes(XML_linia1);
-                //    fs.Write(title, 0, title.Length);
-                //    byte[] author = new UTF8Encoding(true).GetBytes(XML_linia2);
-                //    fs.Write(author, 0, author.Length);
-                //}
-
-                //// Open the stream and read it back.
-                //using (StreamReader sr = File.OpenText(lokalizacjaPlikuXML))
-                //{
-                //    string s = "";
-                //    while ((s = sr.ReadLine()) != null)
-                //    {
-                //        Console.WriteLine(s);
-                //    }
-                //}               
-
 
                 StreamWriter plikXML = new StreamWriter(@"c:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
                 plikXML.WriteLine(XML_linia1);
@@ -182,97 +147,32 @@ namespace jpkapp
             {
                 
             }
-
-
-
-            //    Try
-            //    cn.Open()
-            //    da.Fill(ds, "Selected")
-            //    If ds.Tables("Selected").Rows.Count > 0 Then
-            //        For Each row As DataRow In ds.Tables("Selected").Rows
-            //            da.SelectCommand.CommandText = "SELECT dbo.NazwaPlikuPDF(" + row.Item("ID_DOC_FOR_PRINT").ToString + ")" '"select dbo.NazwaPlikuPDF(" + row.Item("ID").ToString + ")"
-            //            da.Fill(ds, "Nazwa")
-            //            For Each plik As DataRow In ds.Tables("Nazwa").Rows
-            //                '    If ds.Tables("Nazwa").Rows.Count > 0 Then
-            //                '        fFile = New FileInfo(cPathToeInvoices + plik.Item(0) + ".pdf")
-            //                '        If fFile.Exists Then
-            //                '            iSize = fFile.Length
-            //                '            dData = fFile.LastWriteTime
-            //                '        Else
-            //                iSize = 0
-            //                dData = Now
-            //                '        End If
-            //                '        fFile = Nothing
-            //                '    End If
-            //                cBufor = cXMLLine1 + cXMLLine2
-            //                da.SelectCommand.CommandText = "exec dbo.eFakturaXMLgb " + row.Item("ID_DOC_FOR_PRINT").ToString + ", '', " + iSize.ToString + ", '" + dData.ToString + "'"
-            //                da.Fill(ds, "Dokument")
-            //                If ds.Tables("Dokument").Rows.Count > 0 Then
-            //                    wiersz = ds.Tables("Dokument").Rows(0)
-            //                    'If InStr(1, wiersz.Item("Description"), "WZ") > 0 Then
-            //                    cBufor = cBufor + "<Description>" + wiersz.Item("Description").ToString + "</Description>"
-            //                    'cBufor = cBufor + "<LastModified>" + wiersz.Item("LastModified").ToString + "</LastModified>"
-            //                    'cBufor = cBufor + "<FileName>" + wiersz.Item("FileName").ToString + "</FileName>"
-            //                    'cBufor = cBufor + "<FileSize>" + wiersz.Item("FileSize").ToString + "</FileSize>"
-            //                    cBufor = cBufor + "<InvNumber>" + wiersz.Item("InvNumber").ToString + "</InvNumber>"
-            //                    cBufor = cBufor + "<InvRecipient>" + wiersz.Item("InvRecipient").ToString + "</InvRecipient>"
-            //                    cBufor = cBufor + "<NettoAmount>" + wiersz.Item("NettoAmount").ToString.Replace(",", ".") + "</NettoAmount>"
-            //                    cBufor = cBufor + "<BruttoAmount>" + wiersz.Item("BruttoAmount").ToString.Replace(",", ".") + "</BruttoAmount>"
-            //                    cBufor = cBufor + "<Currency>" + wiersz.Item("dh").ToString + "</Currency>"
-            //                    cBufor = cBufor + "<NIP>" + wiersz.Item("NIP").ToString + "</NIP>"
-            //                    cBufor = cBufor + "<Email>" + wiersz.Item("Email").ToString + "</Email>"
-            //                    cBufor = cBufor + "<RecipientNumber>" + wiersz.Item("dm").ToString + "</RecipientNumber>"
-            //                    cBufor = cBufor + "<InvoiceKind>" + wiersz.Item("rodzaj").ToString + "</InvoiceKind>"
-            //                    cBufor = cBufor + cXMLLineN
-            //                    'End If
-            //                    My.Computer.FileSystem.WriteAllText(cPathToeInvoices + plik.Item(0) + ".metadata", cBufor, False)
-            //                    ds.Tables("Dokument").Clear()
-            //                End If
-            //            Next
-            //            ds.Tables("Nazwa").Clear()
-            //        Next
-            //        ds.Tables("Selected").Clear()
-            //    End If
-            //Catch ex As Exception
-            //    My.Computer.FileSystem.WriteAllText("D:\TESTY_APPS\efakturyxmlll\efaktura\eFakturaXML_error_log.txt", ex.Message, True)  '"O:\EFAKTURA\eFakturaXML_error_log.txt"
-            //    Console.WriteLine("Procedura przerwana błędem działania aplikacji proszę o sprawdzenie przyczyny...")
-            //Finally
-            //    Console.WriteLine("Procedura zakończona...")
-            //    daDeleteTAB.Fill(dsDeleteTAB, "Deleted")
-            //    cn.Close()
-            //    ds.Dispose()
-            //    da.Dispose()
-            //    daDeleteTAB.Dispose()
-            //    cn.Dispose()
-            //End Try
-
-
         }
 
-        public class Dbs
-        {
-            private String connectionString;
-            private String OleDBProvider = "Microsoft.JET.OLEDB.4.0";   //if ACE Microsoft.ACE.OLEDB.12.0
-            private String OleDBDataSource = "C:\\test_access2000.mdb";
-            private String OleDBPassword = "";
-            private String PersistSecurityInfo = "False";
+        //public class Dbs
+        //{
+        //    private String connectionString;
+        //    private String OleDBProvider = "Microsoft.JET.OLEDB.4.0";   //if ACE Microsoft.ACE.OLEDB.12.0
+        //    private String OleDBDataSource = "C:\\test_access2000.mdb";
+        //    private String OleDBPassword = "";
+        //    private String PersistSecurityInfo = "False";
 
-            public Dbs()
-            {
+        //    public Dbs()
+        //    {
 
-            }
+        //    }
 
-            public Dbs(String connectionString)
-            {
-                this.connectionString = connectionString;
-            }
+        //    public Dbs(String connectionString)
+        //    {
+        //        this.connectionString = connectionString;
+        //    }
 
-            public String Konek()
-            {
-                connectionString = "Provider=" + OleDBProvider + ";Data Source=" + OleDBDataSource + ";JET OLEDB:Database Password=" + OleDBPassword + ";Persist Security Info=" + PersistSecurityInfo + "";
-                return connectionString;
-            }
+        //    public String Konek()
+        //    {
+        //        connectionString = "Provider=" + OleDBProvider + ";Data Source=" + OleDBDataSource + ";JET OLEDB:Database Password=" + OleDBPassword + ";Persist Security Info=" + PersistSecurityInfo + "";
+        //        return connectionString;
+        //    }
 
-        }
+        //}
     }
 }
