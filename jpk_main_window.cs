@@ -27,9 +27,9 @@ namespace jpkapp
         //ds.WriteXml("C:\\jpk_mag.xml", XmlWriteMode.WriteSchema);
 
         //string nazwaPlikuXML = "jpk_mag.xml";
-        string lokalizacjaPlikuXML = @"C:\jpk_mag.xml"; //+ nazwaPlikuXML + """;
+        string lokalizacjaPlikuXML = @"D:\jpk_mag.xml"; //+ nazwaPlikuXML + """;
         //string Bufor;
-        FileInfo InformacjaOPliku = new FileInfo("c:\\jpk_mag.xml");        
+        FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");        
 
         string XML_linia1  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         string XML_linia2  = "<JPK xmlns:etd=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/\" xmlns:kck=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2013/05/23/eD/KodyCECHKRAJOW/\" xmlns=\"http://jpk.mf.gov.pl/wzor/2016/10/26/10261/\">";
