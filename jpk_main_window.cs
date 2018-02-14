@@ -26,7 +26,7 @@ namespace jpkapp
         string XML_linia1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         string XML_linia2 = "<JPK xmlns:etd=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/\" xmlns:kck=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2013/05/23/eD/KodyCECHKRAJOW/\" xmlns=\"http://jpk.mf.gov.pl/wzor/2016/10/26/10261/\">";
         string XML_linia3 = "      <Naglowek>";
-        string XML_linia4 = "            <WariantFormularza>2</WariantFormularza>";
+        string XML_linia4 = "            <KodFormularza kodSystemowy=”JPK_MAG (1)” wersjaSchemy=”1-0″>JPK_MAG</KodFormularza>";
         string XML_linia5 = "            <WariantFormularza>2</WariantFormularza>";
         string XML_linia6 = "            <CelZlozenia>1</CelZlozenia>";
         string XML_linia7 = "            <DataWytworzeniaJPK>" + DateTime.Now.ToString() + "2017-08-16T13:32:46</DataWytworzeniaJPK>";
