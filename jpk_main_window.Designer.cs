@@ -33,7 +33,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(540, 34);
+            this.button1.Location = new System.Drawing.Point(62, 71);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 89);
             this.button1.TabIndex = 0;
@@ -41,13 +41,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // jpk_main_window
+            // Jpk_main_window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 433);
+            this.ClientSize = new System.Drawing.Size(399, 321);
             this.Controls.Add(this.button1);
-            this.Name = "jpk_main_window";
+            this.Name = "Jpk_main_window";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
