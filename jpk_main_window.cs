@@ -70,84 +70,84 @@ namespace jpkapp
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (File.Exists(lokalizacjaPlikuXML))
-            //    {
-            //        File.Delete(lokalizacjaPlikuXML);
-            //    }
-
-            //    StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
-            //    plikXML.WriteLine(XML_linia1);
-            //    plikXML.WriteLine(XML_linia2);
-            //    plikXML.WriteLine(XML_linia3);
-            //    plikXML.WriteLine(XML_linia4);
-            //    plikXML.WriteLine(XML_linia5);
-            //    plikXML.WriteLine(XML_linia6);
-            //    plikXML.WriteLine(XML_linia7);
-            //    plikXML.WriteLine(XML_linia8);
-            //    plikXML.WriteLine(XML_linia9);
-            //    plikXML.WriteLine(XML_linia10);
-            //    plikXML.WriteLine(XML_linia11);
-            //    plikXML.WriteLine(XML_linia12);
-            //    plikXML.WriteLine(XML_linia13);
-            //    plikXML.WriteLine(XML_linia14);
-            //    plikXML.WriteLine(XML_linia15);
-            //    plikXML.WriteLine(XML_linia16);
-            //    plikXML.WriteLine(XML_linia17);
-            //    plikXML.WriteLine(XML_linia18);
-            //    plikXML.WriteLine(XML_linia19);
-            //    plikXML.WriteLine(XML_linia20);
-            //    plikXML.WriteLine(XML_linia21);
-            //    plikXML.WriteLine(XML_linia22);
-            //    plikXML.WriteLine(XML_linia23);
-            //    plikXML.WriteLine(XML_linia24);
-            //    plikXML.WriteLine(XML_linia25);
-            //    plikXML.WriteLine(XML_linia26);
-            //    plikXML.WriteLine(XML_linia27);
-            //    plikXML.WriteLine(XML_linia28);
-            //    plikXML.WriteLine(XML_linia29);
-            //    plikXML.WriteLine(XML_linia30);
-            //    plikXML.Close();
-            //}
-
-            //catch (Exception Ex)
-            //{
-            //    MessageBox.Show(Ex.ToString());
-            //}
-
-            ////finally
-            ////{
-
-            ////}
-
-
             try
             {
-                //connection.Open();
-                da.Fill(ds, "operacje");
-
-                foreach (DataTable table in ds.Tables)
+                if (File.Exists(lokalizacjaPlikuXML))
                 {
-                    foreach (DataRow dr in table.Rows)
-                    {
-                        var dok_pz_rw = dr["dok_pz_rw"].ToString();
-                        StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
-                        //plikXML.WriteLine("  <Test> " + plikXML + "  </Test> ");
-                        plikXML.WriteLine("  <Test> </Test> ");
-                    }
+                    File.Delete(lokalizacjaPlikuXML);
                 }
+
+                StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+                plikXML.WriteLine(XML_linia1);
+                plikXML.WriteLine(XML_linia2);
+                plikXML.WriteLine(XML_linia3);
+                plikXML.WriteLine(XML_linia4);
+                plikXML.WriteLine(XML_linia5);
+                plikXML.WriteLine(XML_linia6);
+                plikXML.WriteLine(XML_linia7);
+                plikXML.WriteLine(XML_linia8);
+                plikXML.WriteLine(XML_linia9);
+                plikXML.WriteLine(XML_linia10);
+                plikXML.WriteLine(XML_linia11);
+                plikXML.WriteLine(XML_linia12);
+                plikXML.WriteLine(XML_linia13);
+                plikXML.WriteLine(XML_linia14);
+                plikXML.WriteLine(XML_linia15);
+                plikXML.WriteLine(XML_linia16);
+                plikXML.WriteLine(XML_linia17);
+                plikXML.WriteLine(XML_linia18);
+                plikXML.WriteLine(XML_linia19);
+                plikXML.WriteLine(XML_linia20);
+                plikXML.WriteLine(XML_linia21);
+                plikXML.WriteLine(XML_linia22);
+                plikXML.WriteLine(XML_linia23);
+                plikXML.WriteLine(XML_linia24);
+                plikXML.WriteLine(XML_linia25);
+                plikXML.WriteLine(XML_linia26);
+                plikXML.WriteLine(XML_linia27);
+                plikXML.WriteLine(XML_linia28);
+                plikXML.WriteLine(XML_linia29);
+                plikXML.WriteLine(XML_linia30);
+                plikXML.Close();
             }
 
-            catch (Exception ConnEX)
+            catch (Exception Ex)
             {
-                MessageBox.Show(ConnEX.ToString());
+                MessageBox.Show(Ex.ToString());
             }
 
-            finally
-            {
-                //connection.Close();
-            }
+            //finally
+            //{
+
+            //}
+
+
+            //try
+            //{
+            //    //connection.Open();
+            //    da.Fill(ds, "operacje");
+
+            //    foreach (DataTable table in ds.Tables)
+            //    {
+            //        foreach (DataRow dr in table.Rows)
+            //        {
+            //            var dok_pz_rw = dr["dok_pz_rw"].ToString();
+            //            StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+            //            //plikXML.WriteLine("  <Test> " + plikXML + "  </Test> ");
+            //            plikXML.WriteLine("  <Test> </Test> ");
+            //        }
+            //    }
+            //}
+
+            //catch (Exception ConnEX)
+            //{
+            //    MessageBox.Show(ConnEX.ToString());
+            //}
+
+            //finally
+            //{
+            //    //connection.Close();
+            //}
 
         }
 
