@@ -31,8 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.DTP_poczatkowa = new System.Windows.Forms.DateTimePicker();
+            this.DTP_koncowa = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -69,23 +69,23 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "WYNIK";
             // 
-            // dateTimePicker1
+            // DTP_poczatkowa
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 36);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.DTP_poczatkowa.Location = new System.Drawing.Point(14, 36);
+            this.DTP_poczatkowa.Name = "DTP_poczatkowa";
+            this.DTP_poczatkowa.Size = new System.Drawing.Size(200, 20);
+            this.DTP_poczatkowa.TabIndex = 3;
             // 
-            // dateTimePicker2
+            // DTP_koncowa
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(14, 34);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 4;
+            this.DTP_koncowa.Location = new System.Drawing.Point(14, 34);
+            this.DTP_koncowa.Name = "DTP_koncowa";
+            this.DTP_koncowa.Size = new System.Drawing.Size(200, 20);
+            this.DTP_koncowa.TabIndex = 4;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.DTP_koncowa);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(278, 26);
             this.groupBox1.Name = "groupBox1";
@@ -96,7 +96,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.DTP_poczatkowa);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(24, 26);
             this.groupBox2.Name = "groupBox2";
@@ -129,8 +129,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker DTP_poczatkowa;
+        private System.Windows.Forms.DateTimePicker DTP_koncowa;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
     }

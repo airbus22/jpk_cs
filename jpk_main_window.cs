@@ -61,6 +61,12 @@ namespace jpkapp
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            DTP_poczatkowa.Format = DateTimePickerFormat.Custom;
+            DTP_poczatkowa.CustomFormat = "dd-MM-yyyy";
+
+            DTP_koncowa.Format = DateTimePickerFormat.Custom;
+            DTP_koncowa.CustomFormat = "dd-MM-yyyy";
         }
                 
         public void Write(DataTable dt, string filePath)
