@@ -17,9 +17,10 @@ namespace jpkapp
     public partial class Jpk_main_window : Form
     {
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
-        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
+        //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
-        //static string zapytanie = "SELECT * FROM jpk_db.operacje";
+        //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
+        static string zapytanie = "SELECT * FROM jpk_db.operacje";
         //string nazwaPlikuXML = "jpk_mag.xml";
         string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
         FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");
@@ -66,7 +67,6 @@ namespace jpkapp
             //int i = 0;
             StreamWriter sw = null;
             sw = new StreamWriter(filePath, true);
-            string NumerDokumentu;
             //for (i = 0; i < dt.Columns.Count - 1; i++)
             //{
             //    sw.Write(dt.Columns[i].ColumnName + " ");
@@ -103,19 +103,21 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <IloscWydanaRW>" + array[7].ToString() + "</IloscWydanaRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <JednostkaMiaryRW>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")) + "</JednostkaMiaryRW>", FileMode.Append);
+                    sw.Write("                  <JednostkaMiaryRW>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryRW>", FileMode.Append);
                     sw.WriteLine();
                     //sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).IndexOf(",") + "</CenaJednRW>", FileMode.Append);
                     sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",",".") + "</CenaJednRW>", FileMode.Append);
                     sw.WriteLine();
-                    double a = Int32.Parse(array[7].ToString());
+                    double a = 1.1;
+                    //double a = Double.Parse(array[7].ToString());
                     //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
-                    //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.'));
+                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
+                    double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.'));
                     //double b = 1.02;
-                    //int c = (int)a * (int)b;
+                    double c = a*b;
                     ////sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
-                    //sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
-                    //sw.WriteLine();
+                    sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.WriteLine();
                     sw.Write("            </RWWiersz>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            <RWCtrl>", FileMode.Append);
@@ -156,12 +158,28 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <IloscWydanaPZ>" + array[7].ToString() + "</IloscWydanaPZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <JednostkaMiaryPZ>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")) + "</JednostkaMiaryPZ>", FileMode.Append);
+                    sw.Write("                  <JednostkaMiaryPZ>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryPZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednPZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednPZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiPZ>" + array[2].ToString() + "</WartoscPozycjiPZ>", FileMode.Append);
+                    //sw.Write("                  <WartoscPozycjiPZ>" + array[2].ToString() + "</WartoscPozycjiPZ>", FileMode.Append);
+                    //sw.WriteLine();
+
+                    //double a = 1.1;
+                    double a = Double.Parse(array[7].ToString().Replace(",", "."));
+                    //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
+                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
+                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
+                    //double b = 1.1;
+                    double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
+                    //double b = 1.1;
+                    //double c = a*b;
+                    double c = (double)Decimal.Multiply((decimal)a, (decimal)b);
+                    ////sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiRW>" + c.ToString().Replace(",", ".") + "</WartoscPozycjiRW>", FileMode.Append);
                     sw.WriteLine();
+
+
                     sw.Write("            </PZWiersz>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            <PZCtrl>", FileMode.Append);
@@ -202,7 +220,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <IloscWydanaMM>" + array[7].ToString() + "</IloscWydanaMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <JednostkaMiaryMM>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")) + "</JednostkaMiaryMM>", FileMode.Append);
+                    sw.Write("                  <JednostkaMiaryMM>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednMM>", FileMode.Append);
                     sw.WriteLine();
@@ -248,7 +266,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <IloscWydanaWZ>" + array[7].ToString() + "</IloscWydanaWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <JednostkaMiaryWZ>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")) + "</JednostkaMiaryWZ>", FileMode.Append);
+                    sw.Write("                  <JednostkaMiaryWZ>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednWZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednWZ>", FileMode.Append);
                     sw.WriteLine();
@@ -291,6 +309,14 @@ namespace jpkapp
             {
                 File.Delete(lokalizacjaPlikuXML);
             }
+
+
+            double a, b, c;
+            a = 2.5;
+            b = 2.5;
+            c = a * b;
+            label2.Text = "WYNIK = " + c.ToString();
+
 
             try
             {
@@ -361,30 +387,9 @@ namespace jpkapp
 
         }
 
-        //public class Dbs
-        //{
-        //    private String connectionString;
-        //    private String OleDBProvider = "Microsoft.JET.OLEDB.4.0";   //if ACE Microsoft.ACE.OLEDB.12.0
-        //    private String OleDBDataSource = "C:\\test_access2000.mdb";
-        //    private String OleDBPassword = "";
-        //    private String PersistSecurityInfo = "False";
+        private void Jpk_main_window_Load(object sender, EventArgs e)
+        {
 
-        //    public Dbs()
-        //    {
-
-        //    }
-
-        //    public Dbs(String connectionString)
-        //    {
-        //        this.connectionString = connectionString;
-        //    }
-
-        //    public String Konek()
-        //    {
-        //        connectionString = "Provider=" + OleDBProvider + ";Data Source=" + OleDBDataSource + ";JET OLEDB:Database Password=" + OleDBPassword + ";Persist Security Info=" + PersistSecurityInfo + "";
-        //        return connectionString;
-        //    }
-
-        //}
+        }
     }
 }
