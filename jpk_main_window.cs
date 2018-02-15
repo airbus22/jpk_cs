@@ -59,7 +59,8 @@ namespace jpkapp
 
         public Jpk_main_window()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
                 
         public void Write(DataTable dt, string filePath)
@@ -384,11 +385,6 @@ namespace jpkapp
             {
                 //connection.Close();
             }
-
-        }
-
-        private void Jpk_main_window_Load(object sender, EventArgs e)
-        {
 
         }
     }

@@ -117,7 +117,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Jpk_main_window";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Jpk_main_window_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);

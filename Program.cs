@@ -11,6 +11,7 @@ namespace jpkapp
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
+        /// 
         [STAThread]
         static void Main()
         {
