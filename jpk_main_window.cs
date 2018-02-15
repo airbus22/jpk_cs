@@ -203,7 +203,7 @@ namespace jpkapp
                 {
                     sw.Write("      <MM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("            <RWWartosc>", FileMode.Append);
+                    sw.Write("            <MMWartosc>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <NumerMM>" + (array[2].ToString()).Substring(3) + "</NumerMM>", FileMode.Append);
                     sw.WriteLine();
@@ -212,6 +212,10 @@ namespace jpkapp
                     sw.Write("                  <WartoscMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <DataWydaniaMM>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <SkadMM>" + (array[2].ToString()).Substring(3) + "</SkadMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DokadMM>" + (array[2].ToString()).Substring(3) + "</DokadMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </MMWartosc>", FileMode.Append);
                     sw.WriteLine();
