@@ -136,7 +136,6 @@ namespace jpkapp
                     sw.Write("            </RWCtrl>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("      </RW>", FileMode.Append);
-                    //sw.WriteLine();
                 }
 
                 else if (array[2].ToString().Contains("PZ") || array[2].ToString().Contains("Pz") || array[2].ToString().Contains("pZ") || array[2].ToString().Contains("pz"))
@@ -198,7 +197,6 @@ namespace jpkapp
                     sw.Write("            </PZCtrl>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("      </PZ>", FileMode.Append);
-                    //sw.WriteLine();
                 }
 
                 else if (array[2].ToString().Contains("MM") || array[2].ToString().Contains("Mm") || array[2].ToString().Contains("mM") || array[2].ToString().Contains("mm"))
@@ -244,7 +242,6 @@ namespace jpkapp
                     sw.Write("            </MMCtrl>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("      </MM>", FileMode.Append);
-                    //sw.WriteLine();
                 }
 
                 else if (array[2].ToString().Contains("WZ") || array[2].ToString().Contains("Wz") || array[2].ToString().Contains("wZ") || array[2].ToString().Contains("wz"))
@@ -290,7 +287,6 @@ namespace jpkapp
                     sw.Write("            </WZCtrl>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("      </WZ>", FileMode.Append);
-                    //sw.WriteLine();
                 }
 
                 else
@@ -317,13 +313,11 @@ namespace jpkapp
                 File.Delete(lokalizacjaPlikuXML);
             }
 
-
             double a, b, c;
             a = 2.5;
             b = 2.5;
             c = a * b;
             label2.Text = "WYNIK = " + c.ToString();
-
 
             try
             {
