@@ -18,6 +18,7 @@ namespace jpkapp
     {
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
         static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
+        //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
         //string nazwaPlikuXML = "jpk_mag.xml";
         string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
@@ -53,6 +54,7 @@ namespace jpkapp
         string XML_linia28 = "                  <Poczta>WARSZAWA</Poczta>";
         string XML_linia29 = "            </AdresPodmiotu>";
         string XML_linia30 = "      </Podmiot1>";
+        string XML_linia31 = "      <Magazyn>1</Magazyn>";
 
         public Jpk_main_window()
         {
@@ -64,6 +66,7 @@ namespace jpkapp
             //int i = 0;
             StreamWriter sw = null;
             sw = new StreamWriter(filePath, true);
+            string NumerDokumentu;
             //for (i = 0; i < dt.Columns.Count - 1; i++)
             //{
             //    sw.Write(dt.Columns[i].ColumnName + " ");
@@ -73,25 +76,198 @@ namespace jpkapp
             foreach (DataRow row in dt.Rows)
             {
                 object[] array = row.ItemArray;
-
+                
                 if (array[2].ToString().Contains("RW") || array[2].ToString().Contains("Rw") || array[2].ToString().Contains("rW") || array[2].ToString().Contains("rw"))
                 {
-                    sw.Write("      <ElementMagazynu>" + array[2].ToString() + "<\\ElementMagazynu>", FileMode.Append);
+                    sw.Write("      <RW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <RWWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NumerRW>" + (array[2].ToString()).Substring(3) + "</NumerRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataRW>" + (array[11].ToString()).Substring(0,10) + "</DataRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscRW>" + (array[6].ToString()).Substring(0,array[6].ToString().Length-3) + "</WartoscRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataWydaniaRW>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </RWWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <RWWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <Numer2RW>" + (array[2].ToString()).Substring(3) + "</Numer2RW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <KodTowaruRW>" + array[3].ToString() + "</KodTowaruRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NazwaTowaruRW>" + array[4].ToString() + "</NazwaTowaruRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <IloscWydanaRW>" + array[7].ToString() + "</IloscWydanaRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <JednostkaMiaryRW>" + array[5].ToString() + "</JednostkaMiaryRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3) + "</CenaJednRW>", FileMode.Append);
+                    sw.WriteLine();
+                    //int a = Int32.Parse(array[7].ToString());
+                    //int b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
+                    //int c = a * b;
+                    ////sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
+                    //sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
+                    //sw.WriteLine();
+                    sw.Write("            </RWWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <RWCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <LiczbaRW>" + array[2].ToString() + "</LiczbaRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <SumaRW>" + array[2].ToString() + "</SumaRW>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </RWCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("      </RW>", FileMode.Append);
+                    //sw.WriteLine();
                 }
 
                 else if (array[2].ToString().Contains("PZ") || array[2].ToString().Contains("Pz") || array[2].ToString().Contains("pZ") || array[2].ToString().Contains("pz"))
                 {
-                    sw.Write("      <ElementMagazynu>" + array[2].ToString() + "<\\ElementMagazynu>", FileMode.Append);
+                    sw.Write("      <PZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <PZWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NumerPZ>" + array[2].ToString() + "</NumerPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataRPZW>" + array[2].ToString() + "</DataPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscPZ>" + array[2].ToString() + "</WartoscPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataWydaniaRW>" + array[2].ToString() + "</DataWydaniaPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </PZWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <PZWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <Numer2PZ>" + array[2].ToString() + "</Numer2PZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <KodTowaruPZ>" + array[2].ToString() + "</KodTowaruPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NazwaTowaruPZ>" + array[2].ToString() + "</NazwaTowaruPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <IloscWydanaPZ>" + array[2].ToString() + "</IloscWydanaPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <JednostkaMiaryPZ>" + array[2].ToString() + "</JednostkaMiaryPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <CenaJednPZ>" + array[2].ToString() + "</CenaJednPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscPozycjiPZ>" + array[2].ToString() + "</WartoscPozycjiPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </PZWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <PZCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <LiczbaPZ>" + array[2].ToString() + "</LiczbaPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <SumaPZ>" + array[2].ToString() + "</SumaPZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </PZCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("      </PZ>", FileMode.Append);
+                    //sw.WriteLine();
                 }
 
                 else if (array[2].ToString().Contains("MM") || array[2].ToString().Contains("Mm") || array[2].ToString().Contains("mM") || array[2].ToString().Contains("mm"))
                 {
-                    sw.Write("      <ElementMagazynu>" + array[2].ToString() + "<\\ElementMagazynu>", FileMode.Append);
+                    sw.Write("      <MM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <RWWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NumerMM>" + array[2].ToString() + "</NumerMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataMM>" + array[2].ToString() + "</DataMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscMM>" + array[2].ToString() + "</WartoscMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataWydaniaMM>" + array[2].ToString() + "</DataWydaniaMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </MMWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <MMWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <Numer2MM>" + array[2].ToString() + "</Numer2MM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <KodTowaruMM>" + array[2].ToString() + "</KodTowaruMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NazwaTowaruMM>" + array[2].ToString() + "</NazwaTowaruMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <IloscWydanaMM>" + array[2].ToString() + "</IloscWydanaMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <JednostkaMiaryMM>" + array[2].ToString() + "</JednostkaMiaryMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <CenaJednMM>" + array[2].ToString() + "</CenaJednMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscPozycjiMM>" + array[2].ToString() + "</WartoscPozycjiMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </MMWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <MMCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <LiczbaMM>" + array[2].ToString() + "</LiczbaMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <SumaMM>" + array[2].ToString() + "</SumaMM>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </MMCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("      </MM>", FileMode.Append);
+                    //sw.WriteLine();
+                }
+
+                else if (array[2].ToString().Contains("WZ") || array[2].ToString().Contains("Wz") || array[2].ToString().Contains("wZ") || array[2].ToString().Contains("wz"))
+                {
+                    sw.Write("      <WZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <WZWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NumerWZ>" + array[2].ToString() + "</NumerWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataWZ>" + array[2].ToString() + "</DataWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscWZ>" + array[2].ToString() + "</WartoscWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <DataWydaniaWZ>" + array[2].ToString() + "</DataWydaniaWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </WZWWartosc>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <WZWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <Numer2WZ>" + array[2].ToString() + "</Numer2WZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <KodTowaruWZ>" + array[2].ToString() + "</KodTowaruWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <NazwaTowaruWZ>" + array[2].ToString() + "</NazwaTowaruWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <IloscWydanaWZ>" + array[2].ToString() + "</IloscWydanaWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <JednostkaMiaryWZ>" + array[2].ToString() + "</JednostkaMiaryWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <CenaJednWZ>" + array[2].ToString() + "</CenaJednWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <WartoscPozycjiWZ>" + array[2].ToString() + "</WartoscPozycjiWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </WZWiersz>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            <WZCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <LiczbaWZ>" + array[2].ToString() + "</LiczbaWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("                  <SumaWZ>" + array[2].ToString() + "</SumaWZ>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("            </WZCtrl>", FileMode.Append);
+                    sw.WriteLine();
+                    sw.Write("      </WZ>", FileMode.Append);
+                    //sw.WriteLine();
                 }
 
                 else
                 {
-                    sw.Write("      <* * * BłędnaWartość * * *>" + array[2].ToString() + "<\\* * * BłędnaWartość * * *>", FileMode.Append);
+                    sw.Write("      <* * * BłędnaWartość * * *>" + array[2].ToString() + "</* * * BłędnaWartość * * *>", FileMode.Append);
                 }
 
                 //for (i = 0; i < array.Length - 1; i++)
@@ -101,6 +277,8 @@ namespace jpkapp
                 //sw.Write(array[i].ToString());
                 sw.WriteLine();
             }
+            sw.Write("</JPK>", FileMode.Append);
+            sw.WriteLine();
             sw.Close();
         }
 
@@ -144,6 +322,7 @@ namespace jpkapp
                 plikXML.WriteLine(XML_linia28);
                 plikXML.WriteLine(XML_linia29);
                 plikXML.WriteLine(XML_linia30);
+                plikXML.WriteLine(XML_linia31);
                 plikXML.Close();
             }
 
@@ -165,54 +344,6 @@ namespace jpkapp
             try
             {
                 Write(ds.Tables["operacje"], lokalizacjaPlikuXML);
-
-                //int i = 0;
-                //StreamWriter sw = null;
-                //sw = new StreamWriter(lokalizacjaPlikuXML, false);
-                ////for (i = 0; i < dt.Columns.Count - 1; i++)
-                ////{
-                ////    sw.Write(dt.Columns[i].ColumnName + " ");
-                ////}
-                ////sw.Write(dt.Columns[i].ColumnName);
-                ////sw.WriteLine();
-                //foreach (DataRow row in dt.Rows)
-                //{
-                //    object[] array = row.ItemArray;
-                //    if (array[2].ToString().Contains("Rw"))
-                //        sw.Write("<ElementMagazynu>" + array[2].ToString() + "<\\ElementMagazynu>", FileMode.Append);
-                //    //for (i = 0; i < array.Length - 1; i++)
-                //    //{
-                //    //    sw.Write(array[i] + " ");
-                //    //}
-                //    //sw.Write(array[i].ToString());
-                //    sw.WriteLine();
-                //}
-                //sw.Close();
-
-
-                //    //StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);
-                //    //foreach (DataRow row in ds.Tables["operacje"].Rows)
-                //    //{
-                //    //    foreach (object item in row.ItemArray)
-                //    //    {
-                //    //        plikXML.Write(item + "\t");
-                //    //    }
-                //    //    plikXML.WriteLine();
-                //    //}
-
-                //    ////connection.Open();
-                //    //da.Fill(ds, "operacje");
-                //    //StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
-                //    //foreach (DataTable table in ds.Tables)
-                //    //{
-                //    //    foreach (DataRow dr in table.Rows)
-                //    //    {
-                //    //        var dok_pz_rw = dr["dok_pz_rw"].ToString();
-
-                //    //        //plikXML.WriteLine("  <Test> " + plikXML + "  </Test> ");
-                //    //        plikXML.WriteLine("  <Test> </Test> ");
-                //    //    }
-                //    //}
             }
 
             catch (Exception ConnEX)
