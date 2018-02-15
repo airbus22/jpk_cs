@@ -19,8 +19,8 @@ namespace jpkapp
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
         //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
-        //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
-        static string zapytanie = "SELECT * FROM jpk_db.operacje";
+        static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
+        //static string zapytanie = "SELECT * FROM jpk_db.operacje";
         //string nazwaPlikuXML = "jpk_mag.xml";
         string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
         FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");
@@ -109,15 +109,15 @@ namespace jpkapp
                     //sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).IndexOf(",") + "</CenaJednRW>", FileMode.Append);
                     sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",",".") + "</CenaJednRW>", FileMode.Append);
                     sw.WriteLine();
-                    double a = 1.1;
+                    //double a = 1.1;
                     //double a = Double.Parse(array[7].ToString());
                     //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
                     //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
-                    double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.'));
+                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.'));
                     //double b = 1.02;
-                    double c = a*b;
-                    ////sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
-                    sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
+                    //double c = a*b;
+                    sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
+                    //sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -166,13 +166,13 @@ namespace jpkapp
                     //sw.Write("                  <WartoscPozycjiPZ>" + array[2].ToString() + "</WartoscPozycjiPZ>", FileMode.Append);
                     //sw.WriteLine();
 
-                    //double a = 1.1;
-                    double a = Double.Parse(array[7].ToString().Replace(",", "."));
+                    double a = 1.1;
+                    //double a = Double.Parse(array[7].ToString().Replace(",", "."));
                     //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
                     //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
                     //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
-                    //double b = 1.1;
-                    double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
+                    double b = 1.1;
+                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
                     //double b = 1.1;
                     //double c = a*b;
                     double c = (double)Decimal.Multiply((decimal)a, (decimal)b);
