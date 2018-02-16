@@ -17,8 +17,8 @@ namespace jpkapp
     public partial class Jpk_main_window : Form
     {
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
-        //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
-        static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
+        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
+        //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
         //string nazwaPlikuXML = "jpk_mag.xml";
@@ -112,33 +112,17 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <JednostkaMiaryRW>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryRW>", FileMode.Append);
                     sw.WriteLine();
-                    //sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).IndexOf(",") + "</CenaJednRW>", FileMode.Append);
                     sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",",".") + "</CenaJednRW>", FileMode.Append);
                     sw.WriteLine();
-                    double a = 3.3;
-                    //double a = Double.Parse(array[7].ToString());
-                    //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",","."));
-                    string bb = ((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)).Replace(",", ".");
-                    //double b = Double.Parse(bb);
-                    //double b = Double.TryParse(bb);
-                    //object oo = bb.GetType().ToString();
-                    object oo = a.GetType().ToString();
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
-                    double b = 2.2;
-                    double c = a*b;
-                    //sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
-                    //sw.Write("                  <WartoscPozycjiRW>" + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
-                    sw.Write("                  <WartoscPozycjiRW>" + a.ToString() + " " + b.ToString() + " " + bb + " " + " " + oo.GetType() + " " + c.ToString() + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiRW>" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWWiersz>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            <RWCtrl>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <LiczbaRW>" + "1" + "</LiczbaRW>", FileMode.Append);
+                    sw.Write("                  <LiczbaRW>" + "1" + "</LiczbaRW>", FileMode.Append);    //co to znaczy!!!! i dalej dla PZ, MM, WZ....
                     sw.WriteLine();
-                    sw.Write("                  <SumaRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</SumaRW>", FileMode.Append);
+                    sw.Write("                  <SumaRW>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -175,31 +159,15 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <CenaJednPZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednPZ>", FileMode.Append);
                     sw.WriteLine();
-                    //sw.Write("                  <WartoscPozycjiPZ>" + array[2].ToString() + "</WartoscPozycjiPZ>", FileMode.Append);
-                    //sw.WriteLine();
-
-                    double a = 1.1;
-                    //double a = Double.Parse(array[7].ToString().Replace(",", "."));
-                    //double b = Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3));
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(',', '.').Trim());
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
-                    double b = 1.1;
-                    //double b = Double.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", "."));
-                    //double b = 1.1;
-                    //double c = a*b;
-                    double c = (double)Decimal.Multiply((decimal)a, (decimal)b);
-                    ////sw.Write("                  <WartoscPozycjiRW>" + Int32.Parse(array[7].ToString()) * Int32.Parse((array[6].ToString()).Substring(0, array[6].ToString().Length - 3)) + "</WartoscPozycjiRW>", FileMode.Append);
-                    sw.Write("                  <WartoscPozycjiRW>" + c.ToString().Replace(",", ".") + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiPZ>" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiPZ>", FileMode.Append);
                     sw.WriteLine();
-
-
                     sw.Write("            </PZWiersz>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            <PZCtrl>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <LiczbaPZ>" + "1" + "</LiczbaPZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <SumaPZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</SumaPZ>", FileMode.Append);
+                    sw.Write("                  <SumaPZ>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaPZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </PZCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -240,7 +208,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <CenaJednMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiMM>" + array[2].ToString() + "</WartoscPozycjiMM>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiMM>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </MMWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -248,7 +216,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaMM>" + "1" + "</LiczbaMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <SumaMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</SumaMM>", FileMode.Append);
+                    sw.Write("                  <SumaMM>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </MMCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -285,7 +253,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <CenaJednWZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiWZ>" + array[2].ToString() + "</WartoscPozycjiWZ>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiWZ>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </WZWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -293,7 +261,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaWZ>" + "1" + "</LiczbaWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <SumaWZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</SumaWZ>", FileMode.Append);
+                    sw.Write("                  <SumaWZ>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </WZCtrl>", FileMode.Append);
                     sw.WriteLine();
