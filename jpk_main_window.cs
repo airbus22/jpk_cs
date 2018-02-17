@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
@@ -21,7 +22,6 @@ namespace jpkapp
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
-        //string nazwaPlikuXML = "jpk_mag.xml";
         string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
         FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");
 
@@ -60,7 +60,8 @@ namespace jpkapp
         public Jpk_main_window()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            FormBorderStyle = FormBorderStyle.FixedSingle;
 
             DTP_poczatkowa.Format = DateTimePickerFormat.Custom;
             DTP_poczatkowa.CustomFormat = "dd-MM-yyyy";
@@ -69,17 +70,10 @@ namespace jpkapp
             DTP_koncowa.CustomFormat = "dd-MM-yyyy";
         }
                 
-        public void Write(DataTable dt, string filePath)
+        public void GeneruPlikXML(DataTable dt, string filePath)
         {
-            //int i = 0;
             StreamWriter sw = null;
             sw = new StreamWriter(filePath, true);
-            //for (i = 0; i < dt.Columns.Count - 1; i++)
-            //{
-            //    sw.Write(dt.Columns[i].ColumnName + " ");
-            //}
-            //sw.Write(dt.Columns[i].ColumnName);
-            //sw.WriteLine();
             foreach (DataRow row in dt.Rows)
             {
                 object[] array = row.ItemArray;
@@ -272,12 +266,7 @@ namespace jpkapp
                 {
                     sw.Write("      <* * * BłędnaWartość * * *>" + array[2].ToString() + "</* * * BłędnaWartość * * *>", FileMode.Append);
                 }
-
-                //for (i = 0; i < array.Length - 1; i++)
-                //{
-                //    sw.Write(array[i] + " ");
-                //}
-                //sw.Write(array[i].ToString());
+                
                 sw.WriteLine();
             }
             sw.Write("</JPK>", FileMode.Append);
@@ -291,15 +280,20 @@ namespace jpkapp
                 File.Delete(lokalizacjaPlikuXML);
             }
 
-            double a, b, c;
-            a = 2.5;
-            b = 2.5;
-            c = a * b;
-            label2.Text = "WYNIK = " + c.ToString();
-
             try
             {
                 StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+                //for (int i = 1; i <= 31; i++)
+                //{                    
+                //    string s = "XML_linia" + i.ToString();
+                //    //Type NazwaZmiennej = this.GetType();
+                //    //MethodInfo Info = NazwaZmiennej.GetMethod(s);
+                //    MethodInfo Info = this.GetType().GetMethod(s);
+                //    Info.Invoke(s,null);
+                //    //plikXML.WriteLine(s);                    
+                //}
+
+
                 plikXML.WriteLine(XML_linia1);
                 plikXML.WriteLine(XML_linia2);
                 plikXML.WriteLine(XML_linia3);
@@ -351,7 +345,7 @@ namespace jpkapp
 
             try
             {
-                Write(ds.Tables["operacje"], lokalizacjaPlikuXML);
+                GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
             }
 
             catch (Exception ConnEX)
