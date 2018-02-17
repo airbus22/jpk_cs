@@ -18,7 +18,8 @@ namespace jpkapp
     public partial class Jpk_main_window : Form
     {
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
-        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
+        //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
+        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34360";     //baza MySQL - zakres pełniejszy
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
