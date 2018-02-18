@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.Odbc;
 using MySql.Data.MySqlClient;
 
 namespace jpkapp
