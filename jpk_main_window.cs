@@ -370,8 +370,12 @@ namespace jpkapp
             //Microsoft.Jet.OLEDB.4.0
             string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
                            "Data Source=C:\\TEMP\\test_access2000.mdb;" +
-                           "Persist Security Info=True;" +
-                           "Jet OLEDB:Database Password=;";
+                           //"Data Source=C:\\TEMP\\ksapbefg.mdb;" +
+                           //"Trusted_Connection=yes";
+                           "Integrated Security=SSPI";
+                           //"Persist Security Info=True;" +
+                           "Jet OLEDB:User ID=wt;" +
+                           //"Jet OLEDB:Database Password=;";
             try
             {
                 // Open OleDb Connection
