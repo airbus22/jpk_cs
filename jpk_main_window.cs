@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.Odbc;
+using System.Data.OleDb;
 using MySql.Data.MySqlClient;
 
 namespace jpkapp
@@ -340,25 +341,63 @@ namespace jpkapp
 
             //}
 
-            MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "operacje");
-            //ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            //**** MySQL działa**********************************************************
 
+            //MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds, "operacje");
+            ////ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+
+            //try
+            //{
+            //    GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
+            //}
+
+            //catch (Exception ConnEX)
+            //{
+            //    MessageBox.Show(ConnEX.ToString());
+            //}
+
+            //finally
+            //{
+            //    //connection.Close();
+            //}
+
+            //**************************************************************************
+
+            //**** MS Access DB działa**********************************************************
+            //Microsoft.ACE.OLEDB.12.0
+            //Microsoft.Jet.OLEDB.4.0
+            string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+                           "Data Source=C:\\TEMP\\test_access2000.mdb;" +
+                           //"Data Source=C:\\TEMP\\ksapbefg.mdb;" +
+                           //"Trusted_Connection=yes";
+                           "Integrated Security=SSPI";
+                           //"Persist Security Info=True;" +
+                           "Jet OLEDB:User ID=wt;" +
+                           //"Jet OLEDB:Database Password=;";
             try
             {
-                GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
+                // Open OleDb Connection
+                OleDbConnection access_cn = new OleDbConnection();
+                access_cn.ConnectionString = accessConnectionString;
+                access_cn.Open();
+
+                // Execute Queries
+                OleDbCommand cmd = access_cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM `operacje`";
+                OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // close conn after complete
+
+                // Load the result into a DataTable
+                DataTable myDataTable = new DataTable();
+                myDataTable.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("OLEDB Connection FAILED: " + ex.Message);
             }
 
-            catch (Exception ConnEX)
-            {
-                MessageBox.Show(ConnEX.ToString());
-            }
-
-            finally
-            {
-                //connection.Close();
-            }
+            //**************************************************************************
         }
     }
 }
