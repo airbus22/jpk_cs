@@ -369,21 +369,22 @@ namespace jpkapp
             //Microsoft.ACE.OLEDB.12.0
             //Microsoft.Jet.OLEDB.4.0
             string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            //string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
                            "Data Source=C:\\TEMP\\test_access2000.mdb;" +
                            //"Data Source=C:\\TEMP\\ksapbefg.mdb;" +
                            //"Trusted_Connection=yes";
-                           "Integrated Security=SSPI";
-                           //"Persist Security Info=True;" +
-                           //"Jet OLEDB:User ID=wt;" +
-                           //"Jet OLEDB:Database Password=;";
+                           //"Integrated Security=SSPI";
+                           "Persist Security Info=True;" +
+                           "Jet OLEDB:User ID=wt;" +
+                           "Jet OLEDB:Database Password=;";
             try
             {
                 // Open OleDb Connection
                 OleDbConnection access_cn = new OleDbConnection();
-                {
-                    ConnectionString = accessConnectionString;
-                }
-                //access_cn.ConnectionString = accessConnectionString;
+                //{
+                //    ConnectionString = accessConnectionString;
+                //}
+                access_cn.ConnectionString = accessConnectionString;
                 access_cn.Open();
 
                 // Execute Queries
