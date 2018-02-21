@@ -374,13 +374,16 @@ namespace jpkapp
                            //"Trusted_Connection=yes";
                            "Integrated Security=SSPI";
                            //"Persist Security Info=True;" +
-                           "Jet OLEDB:User ID=wt;" +
+                           //"Jet OLEDB:User ID=wt;" +
                            //"Jet OLEDB:Database Password=;";
             try
             {
                 // Open OleDb Connection
                 OleDbConnection access_cn = new OleDbConnection();
-                access_cn.ConnectionString = accessConnectionString;
+                {
+                    ConnectionString = accessConnectionString;
+                }
+                //access_cn.ConnectionString = accessConnectionString;
                 access_cn.Open();
 
                 // Execute Queries
