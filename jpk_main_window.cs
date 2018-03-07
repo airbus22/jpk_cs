@@ -91,7 +91,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <DataRW>" + (array[11].ToString()).Substring(0,10) + "</DataRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscRW>", FileMode.Append);
+                    sw.Write("                  <WartoscRW>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <DataWydaniaRW>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaRW>", FileMode.Append);
                     sw.WriteLine();
@@ -105,13 +105,13 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NazwaTowaruRW>" + array[4].ToString() + "</NazwaTowaruRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <IloscWydanaRW>" + array[7].ToString() + "</IloscWydanaRW>", FileMode.Append);
+                    sw.Write("                  <IloscWydanaRW>-" + array[7].ToString() + "</IloscWydanaRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <JednostkaMiaryRW>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",",".") + "</CenaJednRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiRW>" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiRW>-" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -119,7 +119,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaRW>" + "1" + "</LiczbaRW>", FileMode.Append);    //co to znaczy!!!! i dalej dla PZ, MM, WZ....
                     sw.WriteLine();
-                    sw.Write("                  <SumaRW>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaRW>", FileMode.Append);
+                    sw.Write("                  <SumaRW>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -181,7 +181,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <DataMM>" + (array[11].ToString()).Substring(0, 10) + "</DataMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscMM>", FileMode.Append);
+                    sw.Write("                  <WartoscMM>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <DataWydaniaMM>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaMM>", FileMode.Append);
                     sw.WriteLine();
@@ -199,13 +199,13 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NazwaTowaruMM>" + array[4].ToString() + "</NazwaTowaruMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <IloscWydanaMM>" + array[7].ToString() + "</IloscWydanaMM>", FileMode.Append);
+                    sw.Write("                  <IloscWydanaMM>-" + array[7].ToString() + "</IloscWydanaMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <JednostkaMiaryMM>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednMM>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiMM>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiMM>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiMM>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </MMWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -213,7 +213,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaMM>" + "1" + "</LiczbaMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <SumaMM>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaMM>", FileMode.Append);
+                    sw.Write("                  <SumaMM>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </MMCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -230,7 +230,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <DataWZ>" + (array[11].ToString()).Substring(0, 10) + "</DataWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscWZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscWZ>", FileMode.Append);
+                    sw.Write("                  <WartoscWZ>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <DataWydaniaWZ>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaWZ>", FileMode.Append);
                     sw.WriteLine();
@@ -244,13 +244,13 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NazwaTowaruWZ>" + array[4].ToString() + "</NazwaTowaruWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <IloscWydanaWZ>" + array[7].ToString() + "</IloscWydanaWZ>", FileMode.Append);
+                    sw.Write("                  <IloscWydanaWZ>-" + array[7].ToString() + "</IloscWydanaWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <JednostkaMiaryWZ>" + (array[5].ToString()).Substring(0, (array[5].ToString()).IndexOf(".")).ToUpper() + "</JednostkaMiaryWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <CenaJednWZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</CenaJednWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiWZ>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiWZ>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiWZ>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </WZWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -258,7 +258,7 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaWZ>" + "1" + "</LiczbaWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <SumaWZ>" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaWZ>", FileMode.Append);
+                    sw.Write("                  <SumaWZ>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </WZCtrl>", FileMode.Append);
                     sw.WriteLine();
@@ -343,63 +343,63 @@ namespace jpkapp
 
             //**** MySQL działa**********************************************************
 
-            //MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
-            //DataSet ds = new DataSet();
-            //da.Fill(ds, "operacje");
-            ////ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "operacje");
+            //ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
 
-            //try
-            //{
-            //    GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
-            //}
+            try
+            {
+                GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
+            }
 
-            //catch (Exception ConnEX)
-            //{
-            //    MessageBox.Show(ConnEX.ToString());
-            //}
+            catch (Exception ConnEX)
+            {
+                MessageBox.Show(ConnEX.ToString());
+            }
 
-            //finally
-            //{
-            //    //connection.Close();
-            //}
+            finally
+            {
+                //connection.Close();
+            }
 
             //**************************************************************************
 
             //**** MS Access DB działa**********************************************************
-            //Microsoft.ACE.OLEDB.12.0
-            //Microsoft.Jet.OLEDB.4.0
-            string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            ////Microsoft.ACE.OLEDB.12.0
+            ////Microsoft.Jet.OLEDB.4.0
             //string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
-                           "Data Source=C:\\TEMP\\test_access2000.mdb;" +
-                           //"Data Source=C:\\TEMP\\ksapbefg.mdb;" +
-                           //"Trusted_Connection=yes";
-                           //"Integrated Security=SSPI";
-                           "Persist Security Info=True;" +
-                           "Jet OLEDB:User ID=wt;" +
-                           "Jet OLEDB:Database Password=;";
-            try
-            {
-                // Open OleDb Connection
-                OleDbConnection access_cn = new OleDbConnection();
-                //{
-                //    ConnectionString = accessConnectionString;
-                //}
-                access_cn.ConnectionString = accessConnectionString;
-                access_cn.Open();
+            ////string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            //               "Data Source=C:\\TEMP\\test_access2000.mdb;" +
+            //               //"Data Source=C:\\TEMP\\ksapbefg.mdb;" +
+            //               //"Trusted_Connection=yes";
+            //               //"Integrated Security=SSPI";
+            //               "Persist Security Info=True;" +
+            //               "Jet OLEDB:User ID=wt;" +
+            //               "Jet OLEDB:Database Password=;";
+            //try
+            //{
+            //    // Open OleDb Connection
+            //    OleDbConnection access_cn = new OleDbConnection();
+            //    //{
+            //    //    ConnectionString = accessConnectionString;
+            //    //}
+            //    access_cn.ConnectionString = accessConnectionString;
+            //    access_cn.Open();
 
-                // Execute Queries
-                OleDbCommand cmd = access_cn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM `operacje`";
-                OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // close conn after complete
+            //    // Execute Queries
+            //    OleDbCommand cmd = access_cn.CreateCommand();
+            //    cmd.CommandText = "SELECT * FROM `operacje`";
+            //    OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // close conn after complete
 
-                // Load the result into a DataTable
-                DataTable myDataTable = new DataTable();
-                myDataTable.Load(reader);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("OLEDB Connection FAILED: " + ex.Message);
-            }
+            //    // Load the result into a DataTable
+            //    DataTable myDataTable = new DataTable();
+            //    myDataTable.Load(reader);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("OLEDB Connection FAILED: " + ex.Message);
+            //}
 
             //**************************************************************************
         }
