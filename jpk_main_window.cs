@@ -64,6 +64,8 @@ namespace jpkapp
         {
             InitializeComponent();
 
+            komunikaty_lbl.Text = "Gotowe";
+
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
             DTP_poczatkowa.Format = DateTimePickerFormat.Custom;
@@ -336,10 +338,10 @@ namespace jpkapp
                 MessageBox.Show(Ex.ToString());
             }
 
-            //finally
-            //{
-
-            //}
+            finally
+            {
+                komunikaty_lbl.Text = "Generowanie nagłówka pliku JPK";
+            }
 
             //**** MySQL działa**********************************************************
 
@@ -347,6 +349,7 @@ namespace jpkapp
             DataSet ds = new DataSet();
             da.Fill(ds, "operacje");
             //ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            komunikaty_lbl.Text = "Pobieranie danych z magazynu...";
 
             try
             {
@@ -361,6 +364,7 @@ namespace jpkapp
             finally
             {
                 //connection.Close();
+                komunikaty_lbl.Text = "Pomyślnie zakończono genetowanie pliku w lokalizacji C:\\TEMP\\JPK_MAG\\";
             }
 
             //**************************************************************************
@@ -402,6 +406,11 @@ namespace jpkapp
             //}
 
             //**************************************************************************
+        }
+
+        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
