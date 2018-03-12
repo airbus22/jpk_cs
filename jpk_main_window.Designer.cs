@@ -39,6 +39,8 @@
             this.pilikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.komunikaty_lbl = new System.Windows.Forms.Label();
+            this.poczatkowa_lbl = new System.Windows.Forms.Label();
+            this.koncowa_lbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -80,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.koncowa_lbl);
             this.groupBox1.Controls.Add(this.DTP_koncowa);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(277, 55);
@@ -91,6 +94,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.poczatkowa_lbl);
             this.groupBox2.Controls.Add(this.DTP_poczatkowa);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(23, 55);
@@ -123,7 +127,7 @@
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
             this.zakończToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
-            this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
+            this.zakończToolStripMenuItem.Click += new System.EventHandler(this.ZakończToolStripMenuItem_Click);
             // 
             // komunikaty_lbl
             // 
@@ -132,6 +136,24 @@
             this.komunikaty_lbl.Name = "komunikaty_lbl";
             this.komunikaty_lbl.Size = new System.Drawing.Size(0, 13);
             this.komunikaty_lbl.TabIndex = 10;
+            // 
+            // poczatkowa_lbl
+            // 
+            this.poczatkowa_lbl.AutoSize = true;
+            this.poczatkowa_lbl.Location = new System.Drawing.Point(11, 70);
+            this.poczatkowa_lbl.Name = "poczatkowa_lbl";
+            this.poczatkowa_lbl.Size = new System.Drawing.Size(41, 13);
+            this.poczatkowa_lbl.TabIndex = 4;
+            this.poczatkowa_lbl.Text = "label2";
+            // 
+            // koncowa_lbl
+            // 
+            this.koncowa_lbl.AutoSize = true;
+            this.koncowa_lbl.Location = new System.Drawing.Point(11, 70);
+            this.koncowa_lbl.Name = "koncowa_lbl";
+            this.koncowa_lbl.Size = new System.Drawing.Size(41, 13);
+            this.koncowa_lbl.TabIndex = 5;
+            this.koncowa_lbl.Text = "label3";
             // 
             // Jpk_main_window
             // 
@@ -148,7 +170,9 @@
             this.Name = "Jpk_main_window";
             this.Text = "JPK Magazyn";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -168,6 +192,8 @@
         private System.Windows.Forms.ToolStripMenuItem pilikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.Label komunikaty_lbl;
+        private System.Windows.Forms.Label koncowa_lbl;
+        private System.Windows.Forms.Label poczatkowa_lbl;
     }
 }
 

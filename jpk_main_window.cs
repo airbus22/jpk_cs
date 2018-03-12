@@ -19,9 +19,10 @@ namespace jpkapp
 {
     public partial class Jpk_main_window : Form
     {
-        static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
+        static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;        
         //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
-        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy
+        //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy - działa
+        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper>='25-01-2018 12:48:42' AND data_oper<='26-01-2018 13:28:52'";
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
@@ -340,11 +341,15 @@ namespace jpkapp
 
             finally
             {
+                poczatkowa_lbl.Text = DTP_poczatkowa.Text;
+                koncowa_lbl.Text = DTP_koncowa.Text;
+
                 komunikaty_lbl.Text = "Generowanie nagłówka pliku JPK";
             }
 
             //**** MySQL działa**********************************************************
-
+            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '25-01-2018 12:48:42' AND data_oper <= '26-01-2018 13:28:52'";
+            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '" + DTP_poczatkowa.Text + " 00:00:00' AND data_oper <= '" + DTP_koncowa.Text + " 23:59:59'";
             MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
             DataSet ds = new DataSet();
             da.Fill(ds, "operacje");
@@ -359,6 +364,7 @@ namespace jpkapp
             catch (Exception ConnEX)
             {
                 MessageBox.Show(ConnEX.ToString());
+                komunikaty_lbl.Text = "Błąd podczas pobierania danych o operacjach...";
             }
 
             finally
@@ -408,7 +414,7 @@ namespace jpkapp
             //**************************************************************************
         }
 
-        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZakończToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
