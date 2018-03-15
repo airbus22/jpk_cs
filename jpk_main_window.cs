@@ -19,9 +19,10 @@ namespace jpkapp
 {
     public partial class Jpk_main_window : Form
     {
-        static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;
+        static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;        
         //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
-        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy
+        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy - działa
+        //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper>='25-01-2018 12:48:42' AND data_oper<='26-01-2018 13:28:52'";
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
@@ -64,6 +65,8 @@ namespace jpkapp
         {
             InitializeComponent();
 
+            komunikaty_lbl.Text = "Gotowe";
+
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
             DTP_poczatkowa.Format = DateTimePickerFormat.Custom;
@@ -89,11 +92,11 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NumerRW>" + (array[2].ToString()).Substring(3) + "</NumerRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataRW>" + (array[11].ToString()).Substring(0,10) + "</DataRW>", FileMode.Append);
+                    sw.Write("                  <DataRW>" + (array[10].ToString()).Substring(0,10) + "</DataRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <WartoscRW>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataWydaniaRW>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaRW>", FileMode.Append);
+                    sw.Write("                  <DataWydaniaRW>" + (array[10].ToString()).Substring(0, 10) + "</DataWydaniaRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWWartosc>", FileMode.Append);
                     sw.WriteLine();
@@ -137,11 +140,11 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NumerPZ>" + (array[2].ToString()).Substring(3) + "</NumerPZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataPZ>" + (array[11].ToString()).Substring(0, 10) + "</DataPZ>", FileMode.Append);
+                    sw.Write("                  <DataPZ>" + (array[10].ToString()).Substring(0, 10) + "</DataPZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <WartoscPZ>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscPZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataWydaniaPZ>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaPZ>", FileMode.Append);
+                    sw.Write("                  <DataWydaniaPZ>" + (array[10].ToString()).Substring(0, 10) + "</DataWydaniaPZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </PZWartosc>", FileMode.Append);
                     sw.WriteLine();
@@ -182,11 +185,11 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NumerMM>" + (array[2].ToString()).Substring(3) + "</NumerMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataMM>" + (array[11].ToString()).Substring(0, 10) + "</DataMM>", FileMode.Append);
+                    sw.Write("                  <DataMM>" + (array[10].ToString()).Substring(0, 10) + "</DataMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <WartoscMM>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscMM>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataWydaniaMM>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaMM>", FileMode.Append);
+                    sw.Write("                  <DataWydaniaMM>" + (array[10].ToString()).Substring(0, 10) + "</DataWydaniaMM>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <SkadMM>" + (array[2].ToString()).Substring(3) + "</SkadMM>", FileMode.Append);
                     sw.WriteLine();
@@ -231,11 +234,11 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <NumerWZ>" + (array[2].ToString()).Substring(3) + "</NumerWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataWZ>" + (array[11].ToString()).Substring(0, 10) + "</DataWZ>", FileMode.Append);
+                    sw.Write("                  <DataWZ>" + (array[10].ToString()).Substring(0, 10) + "</DataWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("                  <WartoscWZ>-" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",", ".") + "</WartoscWZ>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <DataWydaniaWZ>" + (array[11].ToString()).Substring(0, 10) + "</DataWydaniaWZ>", FileMode.Append);
+                    sw.Write("                  <DataWydaniaWZ>" + (array[10].ToString()).Substring(0, 10) + "</DataWydaniaWZ>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </WZWWartosc>", FileMode.Append);
                     sw.WriteLine();
@@ -339,17 +342,22 @@ namespace jpkapp
                 MessageBox.Show(Ex.ToString());
             }
 
-            //finally
-            //{
+            finally
+            {
+                poczatkowa_lbl.Text = DTP_poczatkowa.Text;
+                koncowa_lbl.Text = DTP_koncowa.Text;
 
-            //}
+                komunikaty_lbl.Text = "Generowanie nagłówka pliku JPK";
+            }
 
             //**** MySQL działa**********************************************************
-
+            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '25-01-2018 12:48:42' AND data_oper <= '26-01-2018 13:28:52'";
+            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '" + DTP_poczatkowa.Text + " 00:00:00' AND data_oper <= '" + DTP_koncowa.Text + " 23:59:59'";
             MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
             DataSet ds = new DataSet();
             da.Fill(ds, "operacje");
             //ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            komunikaty_lbl.Text = "Pobieranie danych z magazynu...";
 
             try
             {
@@ -359,11 +367,13 @@ namespace jpkapp
             catch (Exception ConnEX)
             {
                 MessageBox.Show(ConnEX.ToString());
+                komunikaty_lbl.Text = "Błąd podczas pobierania danych o operacjach...";
             }
 
             finally
             {
                 //connection.Close();
+                komunikaty_lbl.Text = "Pomyślnie zakończono genetowanie pliku w lokalizacji C:\\TEMP\\JPK_MAG\\";
             }
 
             //**************************************************************************
@@ -405,6 +415,11 @@ namespace jpkapp
             //}
 
             //**************************************************************************
+        }
+
+        private void ZakończToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
