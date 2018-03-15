@@ -111,7 +111,9 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <CenaJednRW>" + (array[6].ToString()).Substring(0, array[6].ToString().Length - 3).Replace(",",".") + "</CenaJednRW>", FileMode.Append);
                     sw.WriteLine();
-                    sw.Write("                  <WartoscPozycjiRW>-" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiRW>", FileMode.Append);
+                    string WartoscPozycjiRW_bufor = "" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "";
+                    //sw.Write("                  <WartoscPozycjiRW>-" + (Double.Parse(array[7].ToString()))*Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</WartoscPozycjiRW>", FileMode.Append);
+                    sw.Write("                  <WartoscPozycjiRW>-" + WartoscPozycjiRW_bufor.Replace(",", ".") + "</WartoscPozycjiRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWWiersz>", FileMode.Append);
                     sw.WriteLine();
@@ -119,7 +121,8 @@ namespace jpkapp
                     sw.WriteLine();
                     sw.Write("                  <LiczbaRW>" + "1" + "</LiczbaRW>", FileMode.Append);    //co to znaczy!!!! i dalej dla PZ, MM, WZ....
                     sw.WriteLine();
-                    sw.Write("                  <SumaRW>-" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "</SumaRW>", FileMode.Append);
+                    string SumaRW_bufor = "" + (Double.Parse(array[7].ToString())) * Convert.ToDouble(((array[6].ToString()).Substring(0, array[6].ToString().Length - 3))) + "";
+                    sw.Write("                  <SumaRW>-" + SumaRW_bufor.Replace(",", ".") + "</SumaRW>", FileMode.Append);
                     sw.WriteLine();
                     sw.Write("            </RWCtrl>", FileMode.Append);
                     sw.WriteLine();
