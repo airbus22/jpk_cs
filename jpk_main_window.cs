@@ -26,8 +26,10 @@ namespace jpkapp
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
         //static string zapytanie = "SELECT * FROM jpk_db.operacje";
-        string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
-        FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");
+        //string lokalizacjaPlikuXML = @"D:\jpk_mag.xml";
+        string lokalizacjaPlikuXML = @"C:\TEMP\jpk_mag.xml";
+        //FileInfo InformacjaOPliku = new FileInfo("D:\\jpk_mag.xml");
+        FileInfo InformacjaOPliku = new FileInfo("C:\\TEMP\\jpk_mag.xml");
 
         string XML_linia1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         string XML_linia2 = "<JPK xmlns:etd=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/\" xmlns:kck=\"http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2013/05/23/eD/KodyCECHKRAJOW/\" xmlns=\"http://jpk.mf.gov.pl/wzor/2016/10/26/10261/\">";
@@ -291,7 +293,8 @@ namespace jpkapp
 
             try
             {
-                StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+                //StreamWriter plikXML = new StreamWriter(@"D:\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
+                StreamWriter plikXML = new StreamWriter(@"C:\TEMP\jpk_mag.xml", true);   //wpisywanie do pliku linia po linii
                 //for (int i = 1; i <= 31; i++)
                 //{                    
                 //    string s = "XML_linia" + i.ToString();
