@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
 [assembly: AssemblyTitle("jpkapp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Program generuje plik JPK_MAG")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("KSAP")]
 [assembly: AssemblyProduct("jpkapp")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Grzegorz Andrzej Brodowski")]
+[assembly: AssemblyTrademark("gb")]
 [assembly: AssemblyCulture("")]
 
 // Ustawienie elementu ComVisible na wartość false sprawia, że typy w tym zestawie są niewidoczne
