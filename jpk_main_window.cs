@@ -21,7 +21,7 @@ namespace jpkapp
     {
         static string ConnectionString = jpkapp.Properties.Settings.Default.ConnectionString;        
         //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34130 AND id_oper<=34150";     //baza MySQL
-        static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy - działa
+      //  static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper>=34388 AND id_oper<=34409";     //baza MySQL - zakres pełniejszy - działa
         //static string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper>='25-01-2018 12:48:42' AND data_oper<='26-01-2018 13:28:52'";
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34130";   //dla RW
         //static string zapytanie = "SELECT* FROM jpk_db.operacje WHERE id_oper=34135";   //dla PZ
@@ -353,13 +353,53 @@ namespace jpkapp
                 komunikaty_lbl.Text = "Generowanie nagłówka pliku JPK";
             }
 
-            //**** MySQL działa**********************************************************
-            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '25-01-2018 12:48:42' AND data_oper <= '26-01-2018 13:28:52'";
-            //string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '" + DTP_poczatkowa.Text + " 00:00:00' AND data_oper <= '" + DTP_koncowa.Text + " 23:59:59'";
-            MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
+            ////**** MySQL działa**********************************************************
+            ////string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '25-01-2018 12:48:42' AND data_oper <= '26-01-2018 13:28:52'";
+            ////string zapytanie = "SELECT * FROM jpk_db.operacje WHERE id_oper >= 28020 AND data_oper >= '" + DTP_poczatkowa.Text + " 00:00:00' AND data_oper <= '" + DTP_koncowa.Text + " 23:59:59'";
+            //MySqlDataAdapter da = new MySqlDataAdapter(zapytanie, ConnectionString);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds, "operacje");
+            ////ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            //komunikaty_lbl.Text = "Pobieranie danych z magazynu...";
+
+            //try
+            //{
+            //    GeneruPlikXML(ds.Tables["operacje"], lokalizacjaPlikuXML);
+            //}
+
+            //catch (Exception ConnEX)
+            //{
+            //    MessageBox.Show(ConnEX.ToString());
+            //    komunikaty_lbl.Text = "Błąd podczas pobierania danych o operacjach...";
+            //}
+
+            //finally
+            //{
+            //    //connection.Close();
+            //    komunikaty_lbl.Text = "Pomyślnie zakończono genetowanie pliku w lokalizacji C:\\TEMP\\JPK_MAG\\";
+            //}
+
+            //***********************************************************************************
+
+            //**** MS Excel file działa**********************************************************
+
+            string fullpath = @"C:\operacje.xls";
+            string xlsVersion = "Excel 8.0";
+            //var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='{1};HDR=YES'", fullpath, xlsVersion);
+
+            int rows;
             DataSet ds = new DataSet();
-            da.Fill(ds, "operacje");
-            //ds.WriteXml(lokalizacjaPlikuXML, XmlWriteMode.WriteSchema);
+            DataTable table = new DataTable();
+            //string strConn = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1;TypeGuessRows=0;ImportMixedTypes=Text\"", fullpath, xlsVersion);
+            string strConn = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='{1};HDR=YES'", fullpath, xlsVersion);
+            using (OleDbConnection dbConnection = new OleDbConnection(strConn))
+            {
+                using (OleDbDataAdapter dbAdapter = new OleDbDataAdapter("SELECT * FROM [operacje$]", dbConnection)) //nazwa arkusza
+                    dbAdapter.Fill(table);
+                rows = table.Rows.Count;
+            }
+            ds.Tables.Add(table);
+
             komunikaty_lbl.Text = "Pobieranie danych z magazynu...";
 
             try
@@ -379,9 +419,9 @@ namespace jpkapp
                 komunikaty_lbl.Text = "Pomyślnie zakończono genetowanie pliku w lokalizacji C:\\TEMP\\JPK_MAG\\";
             }
 
-            //**************************************************************************
+            //***********************************************************************************
 
-            //**** MS Access DB działa**********************************************************
+            //**** MS Access DB działa***********************************************************
             ////Microsoft.ACE.OLEDB.12.0
             ////Microsoft.Jet.OLEDB.4.0
             //string accessConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
